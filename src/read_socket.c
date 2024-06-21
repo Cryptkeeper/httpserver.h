@@ -114,6 +114,14 @@ _hs_parse_buffer_and_exec_user_cb(http_request_t *request,
       return HS_READ_RC_PARSE_ERR;
     case HSH_TOK_NONE:
       return rc;
+    case HSH_TOK_METHOD:
+      // When the METHOD token is encountered, any existing parsed tokens
+      // should be reset to avoid carrying tokens between requests that
+      // originate from the same connection handle. Otherwise tokens will
+      // continue to be appended to the same array.
+      request->tokens.size = 0;
+      _hs_token_array_push(&request->tokens, token);
+      break;
     default:
       _hs_token_array_push(&request->tokens, token);
       break;
