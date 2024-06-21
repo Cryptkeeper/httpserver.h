@@ -1,0 +1,14 @@
+commit 26d46e809fd6f084e2c790c3216869a257b23d99
+
+    reset tokens when an old conn handles a new req
+
+    If a connection is re-used by the client (likely via keep-alive), the
+    previously parsed tokens by the first request are retained and present during
+    the second request. This results in the tokens array containing multiple sets
+    of conflicting tokens rather than the active state of the current
+    request.
+
+    Whenever `HSH_TOK_METHOD` is encountered, the tokens array size tracking
+    is reset. No memory needs to be freed as the token structs are re-used
+    by the library, and they do not retain any memory allocations, only
+    memory views.
