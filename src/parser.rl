@@ -239,7 +239,7 @@ void hsh_parser_init(struct hsh_parser_s* parser) {
 }
 
 struct hsh_token_s hsh_parser_exec(struct hsh_parser_s* parser, struct hsh_buffer_s* buffer, int max_buf_capacity) {
-  struct hsh_token_s none = {};
+  struct hsh_token_s none = {0};
   none.type = HSH_TOK_NONE;
   if (HTTP_FLAG_CHECK(parser->flags, HSH_P_FLAG_DONE) || parser->sequence_id == buffer->sequence_id) {
     return none;

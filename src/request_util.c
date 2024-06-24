@@ -45,7 +45,7 @@ http_string_t hs_request_header(http_request_t *request, char const *key) {
       }
     }
   }
-  return (http_string_t){};
+  return (http_string_t){0};
 }
 
 void hs_request_detect_keep_alive_flag(http_request_t *request) {

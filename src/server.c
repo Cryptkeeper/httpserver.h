@@ -84,7 +84,7 @@ void _hs_server_init_events(http_server_t *serv, hs_evt_cb_t timer_cb) {
   serv->timer_handler = timer_cb;
 
   int tfd = timerfd_create(CLOCK_MONOTONIC, 0);
-  struct itimerspec ts = {};
+  struct itimerspec ts = {0};
   ts.it_value.tv_sec = 1;
   ts.it_interval.tv_sec = 1;
   timerfd_settime(tfd, 0, &ts, NULL);

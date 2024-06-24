@@ -100,7 +100,7 @@ _hs_parse_buffer_and_exec_user_cb(http_request_t *request,
           // body has finished streaming. This is natural when dealing with
           // chunked request bodies but requires us to inject a zero length
           // body for non-chunked requests.
-          struct hsh_token_s token = {};
+          struct hsh_token_s token = {0};
           memset(&token, 0, sizeof(struct hsh_token_s));
           token.type = HSH_TOK_BODY;
           _hs_token_array_push(&request->tokens, token);

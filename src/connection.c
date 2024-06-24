@@ -54,7 +54,7 @@ void _hs_add_timer_event(http_request_t *request, hs_io_cb_t timer_cb) {
 
   // Add timer to timeout requests.
   int tfd = timerfd_create(CLOCK_MONOTONIC, 0);
-  struct itimerspec ts = {};
+  struct itimerspec ts = {0};
   ts.it_value.tv_sec = 1;
   ts.it_interval.tv_sec = 1;
   timerfd_settime(tfd, 0, &ts, NULL);
@@ -93,8 +93,8 @@ http_request_t *_hs_request_init(int sock, http_server_t *server,
   request->handler = io_cb;
   request->timeout = HTTP_REQUEST_TIMEOUT;
   request->flags = HTTP_AUTOMATIC;
-  request->parser = (struct hsh_parser_s){};
-  request->buffer = (struct hsh_buffer_s){};
+  request->parser = (struct hsh_parser_s){0};
+  request->buffer = (struct hsh_buffer_s){0};
   request->tokens.buf = NULL;
   _hs_token_array_init(&request->tokens, 32);
   return request;
