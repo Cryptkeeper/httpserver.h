@@ -1690,7 +1690,7 @@ _match:
 	{
     buffer->after_headers_index = p - buffer->buf + 1;
     parser->content_remaining = parser->content_length;
-    parser->token = (struct hsh_token_s){ };
+    parser->token = (struct hsh_token_s){0};
     parser->token.type = HSH_TOK_HEADERS_DONE;
     HTTP_FLAG_SET(parser->flags, HSH_P_FLAG_TOKEN_READY);
     if (HTTP_FLAG_CHECK(parser->flags, HSH_P_FLAG_CHUNKED)) {
