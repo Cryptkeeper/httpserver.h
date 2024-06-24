@@ -1106,7 +1106,7 @@ http_string_t hs_request_header(http_request_t *request, char const *key) {
       }
     }
   }
-  return (http_string_t){};
+  return (http_string_t){0};
 }
 
 void hs_request_detect_keep_alive_flag(http_request_t *request) {
@@ -1534,7 +1534,7 @@ void hsh_parser_init(struct hsh_parser_s* parser) {
 }
 
 struct hsh_token_s hsh_parser_exec(struct hsh_parser_s* parser, struct hsh_buffer_s* buffer, int max_buf_capacity) {
-  struct hsh_token_s none = {};
+  struct hsh_token_s none = {0};
   none.type = HSH_TOK_NONE;
   if (HTTP_FLAG_CHECK(parser->flags, HSH_P_FLAG_DONE) || parser->sequence_id == buffer->sequence_id) {
     return none;
@@ -1966,7 +1966,7 @@ _hs_parse_buffer_and_exec_user_cb(http_request_t *request,
           // body has finished streaming. This is natural when dealing with
           // chunked request bodies but requires us to inject a zero length
           // body for non-chunked requests.
-          struct hsh_token_s token = {};
+          struct hsh_token_s token = {0};
           memset(&token, 0, sizeof(struct hsh_token_s));
           token.type = HSH_TOK_BODY;
           _hs_token_array_push(&request->tokens, token);
@@ -2376,7 +2376,7 @@ void _hs_server_init_events(http_server_t *serv, hs_evt_cb_t timer_cb) {
   serv->timer_handler = timer_cb;
 
   int tfd = timerfd_create(CLOCK_MONOTONIC, 0);
-  struct itimerspec ts = {};
+  struct itimerspec ts = {0};
   ts.it_value.tv_sec = 1;
   ts.it_interval.tv_sec = 1;
   timerfd_settime(tfd, 0, &ts, NULL);
@@ -2565,7 +2565,7 @@ void _hs_add_timer_event(http_request_t *request, hs_io_cb_t timer_cb) {
 
   // Add timer to timeout requests.
   int tfd = timerfd_create(CLOCK_MONOTONIC, 0);
-  struct itimerspec ts = {};
+  struct itimerspec ts = {0};
   ts.it_value.tv_sec = 1;
   ts.it_interval.tv_sec = 1;
   timerfd_settime(tfd, 0, &ts, NULL);
@@ -2604,8 +2604,8 @@ http_request_t *_hs_request_init(int sock, http_server_t *server,
   request->handler = io_cb;
   request->timeout = HTTP_REQUEST_TIMEOUT;
   request->flags = HTTP_AUTOMATIC;
-  request->parser = (struct hsh_parser_s){};
-  request->buffer = (struct hsh_buffer_s){};
+  request->parser = (struct hsh_parser_s){0};
+  request->buffer = (struct hsh_buffer_s){0};
   request->tokens.buf = NULL;
   _hs_token_array_init(&request->tokens, 32);
   return request;
