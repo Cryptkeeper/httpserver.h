@@ -12,3 +12,7 @@ commit 26d46e809fd6f084e2c790c3216869a257b23d99
     is reset. No memory needs to be freed as the token structs are re-used
     by the library, and they do not retain any memory allocations, only
     memory views.
+
+commit 9fc21e42d9e947d4958dd80c06ffe1a2e8b5e5cd
+
+    remove use of GNU empty initializer extension
