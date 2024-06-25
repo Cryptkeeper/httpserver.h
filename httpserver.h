@@ -349,7 +349,7 @@ void http_request_free_buffer(struct http_request_s *request);
  *
  * @return Allocated response.
  */
-struct http_response_s *http_response_init();
+struct http_response_s *http_response_init(void);
 
 /**
  * Set the response status.
@@ -765,7 +765,7 @@ typedef struct http_response_s {
   int status;
 } http_response_t;
 
-http_response_t *hs_response_init();
+http_response_t *hs_response_init(void);
 void hs_response_set_header(http_response_t *response, char const *key,
                             char const *value);
 void hs_response_set_status(http_response_t *response, int status);
@@ -987,7 +987,7 @@ http_string_t http_request_chunk(struct http_request_s *request) {
   return hs_request_chunk(request);
 }
 
-http_response_t *http_response_init() { return hs_response_init(); }
+http_response_t *http_response_init(void) { return hs_response_init(); }
 
 void http_response_header(http_response_t *response, char const *key,
                           char const *value) {
@@ -2270,7 +2270,7 @@ void hs_response_set_body(http_response_t *response, char const *body,
 }
 
 // See api.h http_response_init
-http_response_t *hs_response_init() {
+http_response_t *hs_response_init(void) {
   http_response_t *response =
       (http_response_t *)calloc(1, sizeof(http_response_t));
   assert(response != NULL);
