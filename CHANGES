@@ -17,3 +17,7 @@ commit 9fc21e42d9e947d4958dd80c06ffe1a2e8b5e5cd
 commit ad5078a47d746777acc2800ca3e5216744d8d155
 
     remove use of GNU empty initializer extension
+
+commit 1dc1229ded9eeb94bb955935f0ccb0b5964e667c
+
+    remove return type from `void http_response_header`
