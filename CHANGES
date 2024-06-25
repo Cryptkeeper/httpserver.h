@@ -21,3 +21,7 @@ commit ad5078a47d746777acc2800ca3e5216744d8d155
 commit 1dc1229ded9eeb94bb955935f0ccb0b5964e667c
 
     remove return type from `void http_response_header`
+
+commit 77099191c818d54e10b2aaf1fe95eb1b3f9ffa8e
+
+    add explicit void argument to init functions
