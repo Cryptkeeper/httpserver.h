@@ -60,7 +60,7 @@ http_string_t http_request_chunk(struct http_request_s *request) {
   return hs_request_chunk(request);
 }
 
-http_response_t *http_response_init() { return hs_response_init(); }
+http_response_t *http_response_init(void) { return hs_response_init(); }
 
 void http_response_header(http_response_t *response, char const *key,
                           char const *value) {

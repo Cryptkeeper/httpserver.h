@@ -239,7 +239,7 @@ void hs_response_set_body(http_response_t *response, char const *body,
 }
 
 // See api.h http_response_init
-http_response_t *hs_response_init() {
+http_response_t *hs_response_init(void) {
   http_response_t *response =
       (http_response_t *)calloc(1, sizeof(http_response_t));
   assert(response != NULL);

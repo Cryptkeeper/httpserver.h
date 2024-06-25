@@ -344,7 +344,7 @@ void http_request_free_buffer(struct http_request_s *request);
  *
  * @return Allocated response.
  */
-struct http_response_s *http_response_init();
+struct http_response_s *http_response_init(void);
 
 /**
  * Set the response status.

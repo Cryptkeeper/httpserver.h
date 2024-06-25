@@ -31,7 +31,7 @@ typedef struct http_response_s {
   int status;
 } http_response_t;
 
-http_response_t *hs_response_init();
+http_response_t *hs_response_init(void);
 void hs_response_set_header(http_response_t *response, char const *key,
                             char const *value);
 void hs_response_set_status(http_response_t *response, int status);
