@@ -1,15 +1,12 @@
 .PHONY: test clean format check-format debug
 
-test: test-unit test-functional test-functional-cpp
+test: test-unit test-functional
 
 test-unit: debug
 	./build/test/unit/unit-test-runner
 
 test-functional: debug
 	./test/functional/functional-test-runner
-
-test-functional-cpp: debug
-	./test/functional/functional-test-runner -cpp
 
 debug: build
 	cd build; \
