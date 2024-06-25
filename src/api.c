@@ -64,7 +64,7 @@ http_response_t *http_response_init() { return hs_response_init(); }
 
 void http_response_header(http_response_t *response, char const *key,
                           char const *value) {
-  return hs_response_set_header(response, key, value);
+  hs_response_set_header(response, key, value);
 }
 
 void http_response_status(http_response_t *response, int status) {
